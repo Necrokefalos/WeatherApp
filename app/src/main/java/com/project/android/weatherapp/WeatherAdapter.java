@@ -1,4 +1,4 @@
-package com.example.android.weatherapp;
+package com.project.android.weatherapp;
 
 import android.content.Context;
 import android.os.Build;
@@ -11,13 +11,8 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
-
-/**
- * Created by georg on 11/24/2017.
- */
 
 public class WeatherAdapter extends ArrayAdapter<Weather> {
 
@@ -64,7 +59,7 @@ public class WeatherAdapter extends ArrayAdapter<Weather> {
 
         //Find the TextView with view ID temperature
         TextView temperatureView = (TextView) listItemView.findViewById(R.id.temperature);
-        // Format the magnitude to show 1 decimal place
+        // Format the temperature to show 1 decimal place
         String formattedTemperature = formatTemperature(currentWeather.getTemperature());
         // Display the temperature of the current weather in that TextView
         temperatureView.setText(formattedTemperature);
@@ -73,21 +68,21 @@ public class WeatherAdapter extends ArrayAdapter<Weather> {
         TextView locationView = (TextView) listItemView.findViewById(R.id.location);
         locationView.setText(currentWeather.getLocation());
 
-        // Create a new Date object from the time in milliseconds of the earthquake
+        // Create a new Date object from the time in milliseconds of the weather
         Date dateObject = new Date(currentWeather.getTimeInMilliseconds()*1000);
 
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);
         // Format the date string (i.e. "Mar 3, 1984")
         String formattedDate = formatDate(dateObject);
-        // Display the date of the current earthquake in that TextView
+        // Display the date of the current weather in that TextView
         dateView.setText(formattedDate);
 
         // Find the TextView with view ID time
         TextView timeView = (TextView) listItemView.findViewById(R.id.time);
         // Format the time string (i.e. "4:30PM")
         String formattedTime = formatTime(dateObject);
-        // Display the time of the current earthquake in that TextView
+        // Display the time of the current weather in that TextView
         timeView.setText(formattedTime);
 
         return listItemView;
