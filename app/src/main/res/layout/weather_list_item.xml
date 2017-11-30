@@ -2,9 +2,8 @@
 
 <!-- Layout for a list of weathers -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="16dp">
 
@@ -12,29 +11,24 @@
         android:id="@+id/temperature"
         android:layout_width="1dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        tools:text="15Co" />
+        android:layout_weight="1" />
 
     <TextView
         android:id="@+id/location"
         android:layout_width="1dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        tools:text="San Francisco , CA" />
+        android:layout_weight="1" />
 
     <TextView
         android:id="@+id/date"
         android:layout_width="1dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        tools:text="Mar 6, 2010" />
+        android:layout_weight="1" />
 
     <TextView
         android:id="@+id/time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        tools:text="3:00 PM" />
-
+        android:layout_weight="1" />
 
 </LinearLayout>

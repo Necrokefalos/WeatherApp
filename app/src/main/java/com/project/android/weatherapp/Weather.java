@@ -1,6 +1,7 @@
 package com.project.android.weatherapp;
 
 public class Weather {
+
     //Temperature of the weather
     private double mTemperature;
 
@@ -27,6 +28,4 @@ public class Weather {
     public long getTimeInMilliseconds() {
         return mTimeInMilliseconds;
     }
-
-
 }
