@@ -2,13 +2,10 @@ package com.project.android.weatherapp;
 
 public class Weather {
 
-    //Temperature of the weather
     private double mTemperature;
 
-    //Location of the weather
     private String mLocation;
 
-    //Time of the weather
     private long mTimeInMilliseconds;
 
     public Weather(double temperature, String location, long timeInMilliseconds) {
