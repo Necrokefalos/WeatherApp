@@ -42,17 +42,17 @@ public final class QueryUtils {
                 JSONObject currentWeather = listArray.getJSONObject(i);
                 //#1
                 JSONObject coord = currentWeather.getJSONObject("coord");
-                Double lon = currentWeather.getDouble("lon");
-                Double lat = currentWeather.getDouble("lat");
+                Double lon = coord.getDouble("lon");
+                Double lat = coord.getDouble("lat");
 
                 //#2
                 JSONObject sys = currentWeather.getJSONObject("sys");
-                int type = currentWeather.getInt("type");
-                int id = currentWeather.getInt("id");
-                Double message = currentWeather.getDouble("message");
-                String country = currentWeather.getString("country");
-                long sunrise = currentWeather.getLong("sunrise");
-                long sunset = currentWeather.getLong("sunset");
+                int type = sys.getInt("type");
+                int id = sys.getInt("id");
+                Double message = sys.getDouble("message");
+                String country = sys.getString("country");
+                long sunrise = sys.getLong("sunrise");
+                long sunset = sys.getLong("sunset");
 
                 //#3
                 JSONArray weath = currentWeather.getJSONArray("weather");
@@ -76,7 +76,7 @@ public final class QueryUtils {
                 //#6
                 JSONObject wind = currentWeather.getJSONObject("wind");
                 Double speed = wind.getDouble("speed");
-                int deg = wind.getInt("deg");
+                //int deg = wind.getInt("deg"); TODO: Fix if no value for deg.
 
                 //#7
                 long time = currentWeather.getLong("dt");
