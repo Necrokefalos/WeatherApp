@@ -1,9 +1,11 @@
 package com.project.android.weatherapp;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_activity);
+        setToolbar();
 
         ArrayList<Weather> emptyList = new ArrayList<>();
         String key = null;
@@ -31,5 +34,10 @@ public class WeatherActivity extends AppCompatActivity {
 
         WeatherAsyncTask task = new WeatherAsyncTask(key, weatherListView);
         task.execute();
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 }
