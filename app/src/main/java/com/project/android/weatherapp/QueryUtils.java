@@ -42,14 +42,14 @@ public final class QueryUtils {
                 JSONObject currentWeather = listArray.getJSONObject(i);
                 //#1
                 JSONObject coord = currentWeather.getJSONObject("coord");
-                Double lon = coord.getDouble("lon");
-                Double lat = coord.getDouble("lat");
+                double lon = coord.getDouble("lon");
+                double lat = coord.getDouble("lat");
 
                 //#2
                 JSONObject sys = currentWeather.getJSONObject("sys");
                 int type = sys.getInt("type");
                 int id = sys.getInt("id");
-                Double message = sys.getDouble("message");
+                double message = sys.getDouble("message");
                 String country = sys.getString("country");
                 long sunrise = sys.getLong("sunrise");
                 long sunset = sys.getLong("sunset");
@@ -64,18 +64,18 @@ public final class QueryUtils {
 
                 //#4
                 JSONObject main = currentWeather.getJSONObject("main");
-                Double temperature = main.getDouble("temp");
+                double temperature = main.getDouble("temp");
                 int pressure = main.getInt("pressure");
                 int humidity = main.getInt("humidity");
-                Double temp_min = main.getDouble("temp_min");
-                Double temp_max = main.getDouble("temp_max");
+                double temp_min = main.getDouble("temp_min");
+                double temp_max = main.getDouble("temp_max");
 
                 //#5
                 int visibility = currentWeather.getInt("visibility");
 
                 //#6
                 JSONObject wind = currentWeather.getJSONObject("wind");
-                Double speed = wind.getDouble("speed");
+                double speed = wind.getDouble("speed");
                 //int deg = wind.getInt("deg"); TODO: Fix if no value for deg.
 
                 //#7

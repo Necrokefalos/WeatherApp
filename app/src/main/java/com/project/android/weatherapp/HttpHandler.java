@@ -1,6 +1,8 @@
 package com.project.android.weatherapp;
 
+import android.app.Activity;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,12 +13,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+import es.dmoral.toasty.Toasty;
+
 public class HttpHandler {
 
-    public HttpHandler() {
+    private Activity activity;
+    private HttpURLConnection urlConnection;
+
+    public HttpHandler(Activity activity) {
+        this.activity = activity;
+        this.urlConnection = null;
     }
 
-    public static URL createUrl(String stringUrl) {
+    public URL createUrl(String stringUrl) {
         URL url = null;
         try {
             url = new URL(stringUrl);
@@ -27,14 +36,13 @@ public class HttpHandler {
         return url;
     }
 
-    public static String makeHttpRequest(URL url) throws IOException {
+    public String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
         if (url == null) {
             return jsonResponse;
         }
 
-        HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
@@ -46,12 +54,15 @@ public class HttpHandler {
             if (urlConnection.getResponseCode() == 200) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
-            } else {
-                Log.e(WeatherActivity.LOG_TAG, "Error response code: "
-                        + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
             Log.e(WeatherActivity.LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toasty.error(activity.getApplicationContext(), "Oops, an error occurred with the server.", Toast.LENGTH_SHORT, true).show();
+                }
+            });
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
