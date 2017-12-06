@@ -9,25 +9,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Helper methods related to requesting and receiving weather data from OWM.
- */
 public final class QueryUtils {
 
     private QueryUtils() {
     }
 
-    /**
-     * Returned list of objects that has been built up from
-     * parsing a JSON response.
-     */
     public static ArrayList<Weather> extractWeathers(String weatherJSON) {
 
         if (TextUtils.isEmpty(weatherJSON)) {
             return null;
         }
 
-        // Create an empty ArrayList that we can start adding weathers to
         ArrayList<Weather> weathers = new ArrayList<>();
 
         try {
@@ -71,7 +63,7 @@ public final class QueryUtils {
                 double temp_max = main.getDouble("temp_max");
 
                 //#5
-                int visibility = currentWeather.getInt("visibility");
+                //int visibility = currentWeather.getInt("visibility");
 
                 //#6
                 JSONObject wind = currentWeather.getJSONObject("wind");

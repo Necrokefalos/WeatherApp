@@ -13,6 +13,8 @@ public class WeatherActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = WeatherActivity.class.getSimpleName();
 
+    public Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,8 @@ public class WeatherActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        DrawerUtil.getDrawer(this,toolbar);
 
         ArrayList<Weather> emptyList = new ArrayList<>();
         String key = null;

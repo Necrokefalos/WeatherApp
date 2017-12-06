@@ -60,7 +60,7 @@ public class HttpHandler {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toasty.error(activity.getApplicationContext(), "Oops, an error occurred with the server.", Toast.LENGTH_SHORT, true).show();
+                    Toasty.error(activity.getApplicationContext(), "Oops, an error occurred while communicating with the server.", Toast.LENGTH_SHORT, true).show();
                 }
             });
         } finally {
