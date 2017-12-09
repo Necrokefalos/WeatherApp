@@ -39,9 +39,9 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
      * Return the formatted temperature string showing 1 decimal place (i.e. "3.2")
      * from a decimal temperature value.
      */
-    private String formatTemperature(double magnitude) {
+    private String formatTemperature(double temperature) {
         DecimalFormat temperatureFormat = new DecimalFormat("0.0");
-        return temperatureFormat.format(magnitude);
+        return temperatureFormat.format(temperature);
     }
 
     @Override
@@ -53,13 +53,10 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(WeatherAdapter.ViewHolder holder, int position) {
-        // Find the TextView with view ID location
+
         TextView locationView = holder.itemView.findViewById(R.id.location);
-        // Find the TextView with view ID date
         TextView dateView = holder.itemView.findViewById(R.id.date);
-        // Find the TextView with view ID time
         TextView timeView = holder.itemView.findViewById(R.id.time);
-        //Find the TextView with view ID temperature
         TextView temperatureView = holder.itemView.findViewById(R.id.temperature);
 
         // Get current viewholder position, aka. current weather
