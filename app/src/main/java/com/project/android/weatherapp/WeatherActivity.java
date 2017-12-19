@@ -11,6 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -37,7 +40,7 @@ public class WeatherActivity extends AppCompatActivity {
 
         try {
             task = new WeatherAsyncTask(this, weatherListView,
-                    new UrlParser().getUrl(getApplicationContext()));
+                    new UrlParser().getUrlFav(getApplicationContext()));
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -52,6 +55,16 @@ public class WeatherActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
         initSearchView(menu);
+        BottomNavigationBar bottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
+
+        bottomNavigationBar
+                .addItem(new BottomNavigationItem(R.drawable.ic_home_black_24dp, "Home"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_favorite_black_24dp, "Books"))
+                .addItem(new BottomNavigationItem(R.drawable.ic_settings_black_24dp, "Settings"))
+                .setBarBackgroundColor(R.color.colorPrimary)
+                .setActiveColor(R.color.colorActive)
+                .setInActiveColor(R.color.colorInActive)
+                .initialise();
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -59,12 +72,12 @@ public class WeatherActivity extends AppCompatActivity {
     private void initSearchView(Menu menu) {
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView =
+        final SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
         if (searchManager != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         }
-        searchView.setQueryHint("Search a location...");
+        searchView.setQueryHint("Search location...");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

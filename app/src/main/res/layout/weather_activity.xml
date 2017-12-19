@@ -15,6 +15,12 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bottom_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
     <FrameLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -23,8 +29,8 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="505dp"
+            android:orientation="vertical"/>
     </FrameLayout>
 </RelativeLayout>
