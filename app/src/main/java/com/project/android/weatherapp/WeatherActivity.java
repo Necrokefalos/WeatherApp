@@ -36,7 +36,7 @@ public class WeatherActivity extends AppCompatActivity {
 
         RecyclerView weatherListView = findViewById(R.id.recycler_view);
         weatherListView.setLayoutManager(new LinearLayoutManager(WeatherActivity.this));
-        weatherListView.setAdapter(new WeatherAdapter(emptyList));
+        weatherListView.setAdapter(new WeatherAdapter(getApplicationContext(), emptyList));
 
         try {
             task = new WeatherAsyncTask(this, weatherListView,
@@ -94,5 +94,4 @@ public class WeatherActivity extends AppCompatActivity {
         });
 
     }
-
 }

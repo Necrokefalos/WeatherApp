@@ -1,5 +1,7 @@
 package com.project.android.weatherapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +15,11 @@ import java.util.Date;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
 
+    private Context context;
     private ArrayList<Weather> weatherArrayList;
 
-    public WeatherAdapter(ArrayList<Weather> weatherArrayList) {
+    public WeatherAdapter(Context context, ArrayList<Weather> weatherArrayList) {
+        this.context = context;
         this.weatherArrayList = weatherArrayList;
     }
 
@@ -92,9 +96,16 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         notifyDataSetChanged();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         public ViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            //context.startActivity(new Intent(context, ForecastActivity.class));
         }
     }
 }
